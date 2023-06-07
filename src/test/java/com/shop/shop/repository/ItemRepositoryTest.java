@@ -10,7 +10,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.TestPropertySource;
+import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -164,7 +168,22 @@ class ItemRepositoryTest {
         int price = 10003;
         String itemSellStat = "SELL";
 
-        booleanBuilder.and(item.itemDetail)
+        booleanBuilder.and(item.itemDetail.like("%" + itemDetail + "%"));
+        booleanBuilder.and(item.price.gt(price));
+        System.out.println(ItemSellStatus.SELL);
+        if(StringUtils.equals(itemSellStat,ItemSellStatus.SELL)){
+            booleanBuilder.and(item.itemSellStatus.eq(ItemSellStatus.SELL));
+        }
+
+        Pageable pageable = PageRequest.of(0, 5);
+        Page<Item> itemPageingResult = itemRepository.findAll(booleanBuilder, pageable);
+        System.out.println("itemPageingResult = " + itemPageingResult.getTotalElements());
+
+        List<Item> resultItemList = itemPageingResult.getContent();
+
+        for (Item item1 : resultItemList) {
+            System.out.println(item1.toString());
+        }
     }
 
 }
