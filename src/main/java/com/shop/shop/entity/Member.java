@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Member {
 
     @Id
-    @Column(name="member_id")
+    @Column(name="member_ida")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -39,7 +39,7 @@ public class Member {
         member.setAddress(memberFormDto.getAddress());
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
-        member.setRole(Role.USER);
+        member.setRole(Role.ADMIN);
         return member;
 
     }
