@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
       layout:decorate="~{layouts/layout1}">
 
 <!-- 사용자 스크립트 추가 -->
@@ -59,7 +60,7 @@
                 </td>
                 <td th:text="${item.itemSellStatus == T(com.shop.shop.constant.ItemSellStatus).SELL} ? '판매중' : '품절'"></td>
                 <td th:text="${item.createdBy}"></td>
-                <td th:text="${item.regTime}"></td>
+                <td th:text="${#temporals.format(item.updateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
             </tr>
             </tbody>
         </table>

@@ -171,8 +171,9 @@
         </div>
 
         <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-            <button type="button" class="btn btn-primary" onclick="deleteItem(101)">삭제</button>
+            <button type="button" class="btn btn-primary" th:onclick="'deleteItem(' + ${itemFormDto.id} + ')'" >삭제</button>
         </div>
+
 
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
@@ -181,3 +182,6 @@
 </div>
 
 </html>
+
+
+<!--<button type="button" class="btn btn-primary" th:onclick="'deleteItem(' + ${itemFormDto.id} + ')'" >삭제</button>-->
