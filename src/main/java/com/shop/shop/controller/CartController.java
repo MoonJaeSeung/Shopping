@@ -53,6 +53,7 @@ public class CartController {
         return "cart/cartList";
     }
 
+
     @PatchMapping(value = "/cartItem/{cartItemId}")
     public @ResponseBody ResponseEntity updateCartItem(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal) {
 
@@ -84,6 +85,7 @@ public class CartController {
     public @ResponseBody ResponseEntity orderCartItem
             (@RequestBody CartOrderDto cartOrderDto, Principal principal) {
 
+        System.out.println(" cart함수 등장");
         List<CartOrderDto> cartOrderDtoList = cartOrderDto.getCartOrderDtoList();
 
         if(cartOrderDtoList == null || cartOrderDtoList.size() == 0){

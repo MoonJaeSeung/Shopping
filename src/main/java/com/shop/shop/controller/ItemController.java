@@ -8,13 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
@@ -70,6 +69,15 @@ public class ItemController {
 
         return "item/itemForm";
     }
+
+    @DeleteMapping(value="/admin/item/{itemId}/delete")
+    public @ResponseBody ResponseEntity deleteItem(@PathVariable("itemId") Long itemId){
+        System.out.println("delete 함수 등장");
+        itemService.deleteItem(itemId);
+        return new ResponseEntity<Long>(itemId, HttpStatus.OK);
+    }
+
+
 
     @GetMapping(value="/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
