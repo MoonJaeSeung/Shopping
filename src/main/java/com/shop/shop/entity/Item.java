@@ -45,6 +45,7 @@ public class Item extends BaseEntity {
 
     @Column(name = "discount")
     private int discount;
+    //dddddd
 
     public void updateItem(ItemFormDto itemFormDto) {
         this.itemNm = itemFormDto.getItemNm();
@@ -52,6 +53,7 @@ public class Item extends BaseEntity {
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+        this.discount = itemFormDto.getDiscount();
     }
 
     public void removeStock(int stockNumber){
