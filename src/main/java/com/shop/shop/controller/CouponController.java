@@ -21,17 +21,19 @@ public class CouponController {
 
     private final CouponService couponService;
 
-    @GetMapping("admin/coupon/new")
+    @GetMapping("/admin/coupon/new")
     public String couponNew(Model model){
         model.addAttribute("couponDto", new CouponDto());
         return "coupon/couponForm";
     }
 
-    @PostMapping("admin/coupon/new")
+    @PostMapping("/admin/coupon/new")
     public String saveCoupon(@Valid CouponDto couponDto, BindingResult bindingResult, Principal principal) {
-        if (bindingResult.hasErrors()) {
-            return "coupon/couponForm";
-        }
+//        if (bindingResult.hasErrors()) {
+//            return "coupon/couponForm";
+//        }
+
+        couponService.saveCoupon(couponDto);
 
         log.info("여기까진 왔어");
         return "redirect:/";
