@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<head>
+  <!-- Add necessary meta tags, CSS, and JavaScript here -->
+</head>
+
+<div layout:fragment="content">
+  <h1>Coupon List</h1>
+  <a th:href="@{/admin/coupon/new}">Create Coupon</a>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Coupon Name</th>
+      <th>Deadline</th>
+      <th>Discount Price</th>
+      <th>Discount Ratio</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate over the coupons and display them in the table -->
+    <tr th:each="coupon : ${couponList}">
+      <td th:text="${coupon.couponNm}"></td>
+      <td th:text="${coupon.deadLine}"></td>
+      <td th:text="${coupon.dis_price}"></td>
+      <td th:text="${coupon.dis_ratio} + '%'"></td>
+      <td>
+        <form th:action="@{/coupon/delete/{id}(id=${coupon.id})}" method="post">
+          <button type="submit" class="btn btn danger">delete</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</html>

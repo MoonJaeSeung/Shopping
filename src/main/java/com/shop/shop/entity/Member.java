@@ -8,6 +8,7 @@ import lombok.ToString;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "member")
@@ -28,6 +29,9 @@ public class Member extends BaseEntity{
     private String password;
 
     private String address;
+
+    @OneToMany(cascade = CascadeType.REMOVE)
+    private List<Coupon> Coupon;
 
     @Enumerated(EnumType.STRING)
     private Role role;

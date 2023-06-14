@@ -19,10 +19,12 @@
                 priceInput.disabled = false;
                 ratioInput.disabled = true;
                 ratioInput.value = ""; // Reset ratio input value
+                disRatioInput.checked = false; // Uncheck dis_ratio_check
             } else if (disRatioInput.checked) {
                 priceInput.disabled = true;
                 priceInput.value = ""; // Reset price input value
                 ratioInput.disabled = false;
+                disPriceInput.checked = false; // Uncheck dis_price_check
             } else {
                 priceInput.disabled = true;
                 ratioInput.disabled = true;
