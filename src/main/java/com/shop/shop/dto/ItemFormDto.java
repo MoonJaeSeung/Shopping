@@ -4,6 +4,7 @@ import com.shop.shop.constant.ItemSellStatus;
 import com.shop.shop.entity.Item;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
+@ToString
 public class ItemFormDto {
 
     private Long id;

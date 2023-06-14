@@ -3,6 +3,7 @@ package com.shop.shop.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Getter @Setter
+@ToString
 public class Coupon {
 
     @Id
@@ -36,4 +38,6 @@ public class Coupon {
         this.dis_price = dis_price;
         this.dis_ratio = dis_ratio;
     }
+
+
 }

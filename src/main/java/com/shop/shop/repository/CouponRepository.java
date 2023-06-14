@@ -10,4 +10,3 @@ public interface CouponRepository extends JpaRepository<Coupon,Long>, QuerydslPr
 }
 
 
-// QuerydslPredicateExecutor<Item>,ItemRepositoryCustom

@@ -14,6 +14,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 
+import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -44,6 +47,24 @@ class MemberTest {
         System.out.println("member.getUpdateTime() = " + member.getUpdateTime());
         System.out.println("member.getCreatedBy() = " + member.getCreatedBy());
         System.out.println("member.getModifiedBy() = " + member.getModifiedBy());
+    }
+
+    @Test
+    @DisplayName("가지고 있는 쿠폰 확인")
+    public void test(){
+        Optional<Member> member = memberRepository.findById(13L);
+        List<Coupon> coupon = member.get().getCoupon();
+        System.out.println("coupon = " + coupon);
+
+    }
+
+    @Test
+    @DisplayName("쿠폰 초기화")
+    public void test2(){
+        Member member = memberRepository.findById(13L).get();
+        member.removeAllCoupon();
+
+
     }
 
 }

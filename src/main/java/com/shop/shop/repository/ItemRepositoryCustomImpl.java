@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {//1
 
-    private JPAQueryFactory queryFactory; //2
+    private JPAQueryFactory queryFactory;
 
     public ItemRepositoryCustomImpl(EntityManager em) { //3
         this.queryFactory = new JPAQueryFactory(em);
