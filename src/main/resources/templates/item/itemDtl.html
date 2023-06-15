@@ -24,7 +24,9 @@
         var currentUrl = window.location.href;
         var dis_price = currentUrl.match(/dis_price=(\d+)/);
         var dis_ratio = currentUrl.match(/dis_ratio=(\d+)/);
-        var number = dis_price ? parseInt(dis_price[1]) : dis_ratio ? parseInt(dis_ratio[1]) : null;
+        var number = dis_price ? parseInt(dis_price[1]) : dis_ratio ? parseInt(dis_ratio[1]) : 0;
+
+
 
         function getUrl() {
             if (number !== null) {

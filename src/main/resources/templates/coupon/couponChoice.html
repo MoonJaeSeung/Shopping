@@ -130,7 +130,7 @@
             <form th:action="@{/item/{itemId}(itemId=${item})}" method="get">
                 <input type="hidden" th:if="${coupon.dis_price != 0}" name="dis_price" th:value="${coupon.dis_price}"/>
                 <input type="hidden" th:if="${coupon.dis_ratio != 0}" name="dis_ratio" th:value="${coupon.dis_ratio}"/>
-                <button th:if="${#lists.contains(ids,coupon.id)}" type="submit">Use</button>
+                <button  type="submit">Use</button>
             </form>
         </div>
     </div>

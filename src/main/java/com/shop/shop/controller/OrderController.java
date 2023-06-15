@@ -28,7 +28,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping(value = "/order/{number}")
+    @PostMapping(value = {"/order/{number}","/order"})
     public @ResponseBody ResponseEntity order(@RequestBody @Valid OrderDto orderDto, BindingResult bindingResult,
                                               Principal principal, @PathVariable("number") int coupon){
 
