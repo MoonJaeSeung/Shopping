@@ -22,14 +22,26 @@
         });
 
         var currentUrl = window.location.href;
-        var matches = currentUrl.match(/dis_price=(\d+)/);
-        var number = matches ? parseInt(matches[1]) : null;
+        var dis_price = currentUrl.match(/dis_price=(\d+)/);
+        var coupon_price = dis_price ? parseInt(dis_price[1]) : null;
+
+        var dis_ratio = currentUrl.match(/dis_ratio=(\d+)/);
+        var coupon_ratio = dis_ratio ? parseInt(dis_ratio[1]) : null;
 
         function getUrl() {
+            if (number !== null) {
+                if(coupon_price != null)
+                document.getElementById("coupon").innerText = "쿠폰 적용시 " + coupon_price + " 추가 할인";
+                else if(coupon_ratio != null){
+                    document.getElementById("coupon").innerText = "쿠폰 적용시 " + coupon_ratio+ " 추가 할인";
+                }
 
-            document.getElementById("coupon").innerText ="쿠폰 적용시" +number + "추가 할인";
+            } else {
+                document.getElementById("coupon").style.display = "none";
+            }
             console.log(number);
         }
+
 
 
         function calculateToalPrice(){
