@@ -35,14 +35,18 @@
                 var header = $("meta[name='_csrf_header']").attr("content");
 
 
-                var url = "/item/" + itemId + "/" + couponId;
-                // var url = "/item/" + itemId + "/" + couponId;
+                var url = "/coupon/" + itemId
+                var paramData = {
+                    couponId: couponId
+                }
 
+                var param = JSON.stringify(paramData);
 
                 $.ajax({
                     url: url,
-                    type: "GET",
+                    type: "POST",
                     contentType: "application/json",
+                    data: param,
                     beforeSend: function (xhr) {
                         /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
                         xhr.setRequestHeader(header, token);
@@ -116,21 +120,21 @@
 
 <div layout:fragment="content">
     <h1>Coupons</h1>
-
     <div th:each="coupon : ${coupons}" class="coupon">
-        <p type="hidden" id="couponId" th:field="${coupon.id}"></p>
-        <p type="hidden" id="itemId" th:value="${item}"></p>
         <h2 th:text="${coupon.couponNm}">Coupon 1</h2>
         <p th:if="${coupon.dis_price != 0}" th:text="${coupon.dis_price} + 'one discount'">Discount: $10 off</p>
         <p th:if="${coupon.dis_ratio != 0}" th:text="${coupon.dis_ratio} + '% off'">Discount: 10% off</p>
         <p th:text="${#temporals.format(coupon.deadLine, 'yyyy-MM-dd')}">Expires: June 30, 2023</p>
         <div class="button-group">
             <div class="coupon-area" th:onclick="'handleCouponClick(' +${coupon.id} +')'"></div>
-            <button th:if="${#lists.contains(ids,coupon.id)}" type="button" th:onclick="'useCoupon(' +${coupon.id} + ',' + ${item}  + ')'">Use</button>
+            <form th:action="@{/item/{itemId}(itemId=${item})}" method="get">
+                <input type="hidden" th:if="${coupon.dis_price != 0}" name="dis_price" th:value="${coupon.dis_price}"/>
+                <input type="hidden" th:if="${coupon.dis_ratio != 0}" name="dis_ratio" th:value="${coupon.dis_ratio}"/>
+                <button th:if="${#lists.contains(ids,coupon.id)}" type="submit">Use</button>
+            </form>
         </div>
     </div>
 </div>
-
 
 
 <!-- Add more coupon divs as needed -->

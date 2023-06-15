@@ -79,11 +79,18 @@ public class ItemController {
 
 
 
-    @GetMapping(value={"/item/{itemId}/{couponId}", "item/{itemId}"})
-    public String itemDtl(Model model, @PathVariable("itemId") Long itemId, @PathVariable(name = "couponId", required = false) Long couponId){
+    @GetMapping(value="/item/{itemId}")
+    public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
         System.out.println("itemId ======= " + itemId);
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         System.out.println("itemFormDto = " + itemFormDto.toString());
+        model.addAttribute("item", itemFormDto);
+        return "item/itemDtl";
+    }
+
+    @PostMapping(value = "/coupon/{itemId}")
+    public String useCoupon(@PathVariable("itemId") Long itemId, Model model){
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }

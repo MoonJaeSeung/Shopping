@@ -14,16 +14,28 @@
         $(document).ready(function(){
 
             calculateToalPrice();
+            getUrl()
 
             $("#count").change( function(){
                 calculateToalPrice();
             });
         });
 
+        var currentUrl = window.location.href;
+        var matches = currentUrl.match(/dis_price=(\d+)/);
+        var number = matches ? parseInt(matches[1]) : null;
+
+        function getUrl() {
+
+            document.getElementById("coupon").innerText ="쿠폰 적용시" +number + "추가 할인";
+            console.log(number);
+        }
+
+
         function calculateToalPrice(){
             var count = $("#count").val();
             var price = $("#price").val();
-            var totalPrice = price*count;
+            var totalPrice = price*count - number;
             $("#totalPrice").html(totalPrice + '원');
         }
 
@@ -164,10 +176,13 @@
 
 
             <div class="text-right">
-                <div class="h4 text-danger text-left">
+                <div class="h4 text-danger text-left" >
                     <input type="hidden" th:value="${item.price * item.discount/100}" id="price" name="price">
                     <span id="op" th:text="'원가 ' + ${item.price} +'원'"></span><br>
-                    <span th:text="'할인가 ' + ${item.price * item.discount/100} + '원'"></span>
+                    <span th:text="'할인가 ' + (${item.price * item.discount/100}) + '원'"></span>
+                    <br>
+                    <span id="coupon"></span>
+
 
                 </div>
                 <div class="input-group w-50">
