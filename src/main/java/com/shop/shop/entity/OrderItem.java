@@ -26,7 +26,7 @@ public class OrderItem extends BaseEntity{
 
     private int count; //수량
 
-    public static OrderItem createOrderItem(Item item, int count){
+    public static OrderItem createOrderItem(Item item, int count, int coupon){
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setCount(count);

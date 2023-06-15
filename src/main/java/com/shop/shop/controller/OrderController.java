@@ -28,8 +28,9 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping(value = "/order")
-    public @ResponseBody ResponseEntity order(@RequestBody @Valid OrderDto orderDto, BindingResult bindingResult, Principal principal){
+    @PostMapping(value = "/order/{number}")
+    public @ResponseBody ResponseEntity order(@RequestBody @Valid OrderDto orderDto, BindingResult bindingResult,
+                                              Principal principal, @PathVariable("number") int coupon){
 
         if(bindingResult.hasErrors()){
             StringBuilder sb = new StringBuilder();
@@ -44,7 +45,7 @@ public class OrderController {
         Long orderId;
 
         try{
-            orderId = orderService.order(orderDto, email);
+            orderId = orderService.order(orderDto, email,coupon);
         }catch(Exception e){
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
