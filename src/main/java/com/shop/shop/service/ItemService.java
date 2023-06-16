@@ -51,6 +51,7 @@ public class ItemService {
     @Transactional(readOnly = true)
     public ItemFormDto getItemDtl(Long itemId) {
 
+        System.out.println("itemId = " + itemId);
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
         List<ItemImgDto> itemImgDtoList = new ArrayList<>();
         for (ItemImg itemImg : itemImgList) {

@@ -31,12 +31,13 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final ItemImgRepository itemImgRepository;
 
-    public Long order(OrderDto orderDto, String email) {
+    public Long order(OrderDto orderDto, String email,int coupon) {
         Item item = itemRepository.findById(orderDto.getItemId())
                 .orElseThrow(EntityNotFoundException::new);
         Member member = memberRepository.findByEmail(email);
         List<OrderItem> orderItemList = new ArrayList<>();
         OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
+        orderItem.setOrderPrice(orderItem.getOrderPrice() - coupon);
         orderItemList.add(orderItem);
 
         Order order = Order.createOrder(member, orderItemList);

@@ -81,6 +81,15 @@ public class ItemController {
 
     @GetMapping(value="/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
+        System.out.println("itemId ======= " + itemId);
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        System.out.println("itemFormDto = " + itemFormDto.toString());
+        model.addAttribute("item", itemFormDto);
+        return "item/itemDtl";
+    }
+
+    @PostMapping(value = "/coupon/{itemId}")
+    public String useCoupon(@PathVariable("itemId") Long itemId, Model model){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
@@ -110,10 +119,11 @@ public class ItemController {
 
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
+
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0,3);
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
         model.addAttribute("items", items);
-        model.addAttribute("temSearchDto", itemSearchDto);
+        model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage",5);
         return "item/itemMng";
     }

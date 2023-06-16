@@ -8,15 +8,17 @@ import lombok.ToString;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "member")
-@Getter @Setter
+@Getter
+@Setter
 @ToString
-public class Member extends BaseEntity{
+public class Member extends BaseEntity {
 
     @Id
-    @Column(name="member_ida")
+    @Column(name = "member_ida")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -29,10 +31,13 @@ public class Member extends BaseEntity{
 
     private String address;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Coupon> coupon;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
+    public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
         Member member = new Member();
         member.setName(memberFormDto.getName());
         member.setEmail(memberFormDto.getEmail());
@@ -41,7 +46,17 @@ public class Member extends BaseEntity{
         member.setPassword(password);
         member.setRole(Role.ADMIN);
         return member;
+    }
 
+    public void removeCoupon(Long couponId) {
+        for (int i = 0; i < coupon.size(); i++) {
+            if (coupon.get(i).getId() == couponId)
+                coupon.remove(i);
+        }
+    }
+
+    public void removeAllCoupon(){
+        coupon.clear();
     }
 
 }

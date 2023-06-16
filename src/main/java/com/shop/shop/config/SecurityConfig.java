@@ -36,10 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
         http.authorizeRequests()
                 .mvcMatchers("/", "/members/**",
-                        "/item/**", "/images/**").permitAll()
+                        "/item/**", "/images/**","/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         ;
+
+        http
+                .exceptionHandling()
+                .accessDeniedPage("/error.html");
 
         http.exceptionHandling()
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint());

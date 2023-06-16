@@ -43,12 +43,17 @@ public class Item extends BaseEntity {
     @OneToMany(mappedBy = "item", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<ItemImg> itemImgs = new ArrayList<>();
 
+    @Column(name = "discount")
+    private int discount;
+    //dddddd
+
     public void updateItem(ItemFormDto itemFormDto) {
         this.itemNm = itemFormDto.getItemNm();
         this.price = itemFormDto.getPrice();
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+        this.discount = itemFormDto.getDiscount();
     }
 
     public void removeStock(int stockNumber){

@@ -142,6 +142,15 @@
         </div>
         <p th:if="${#fields.hasErrors('itemDetail')}" th:errors="*{itemDetail}" class="fieldError">Incorrect data</p>
 
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">할인 적용</span>
+            </div>
+            <input type="number" th:field="*{discount}" class="form-control" placeholder="상품의 할인율을 입력해주세요">
+        </div>
+        <p th:if="${#fields.hasErrors('stockNumber')}" th:errors="*{stockNumber}" class="fieldError">Incorrect data</p>
+
+
         <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
             <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
                 <div class="custom-file img-div">

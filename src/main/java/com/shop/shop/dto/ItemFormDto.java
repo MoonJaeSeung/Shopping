@@ -4,6 +4,7 @@ import com.shop.shop.constant.ItemSellStatus;
 import com.shop.shop.entity.Item;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
+@ToString
 public class ItemFormDto {
 
     private Long id;
@@ -22,11 +24,13 @@ public class ItemFormDto {
     @NotNull(message = "가겨은 필수 입력값입니다.")
     private Integer price;
 
-    @NotBlank(message = "이름은 필수 입력값입니다")
+    @NotBlank(message = "상품 설명은 필수 입력값입니다")
     private String itemDetail;
 
     @NotNull(message = "재고는 필수 입력 값입니다.")
     private Integer stockNumber;
+
+    private Integer discount;
 
     private ItemSellStatus itemSellStatus;
 

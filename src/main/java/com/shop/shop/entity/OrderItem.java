@@ -30,8 +30,7 @@ public class OrderItem extends BaseEntity{
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setCount(count);
-        orderItem.setOrderPrice(item.getPrice());
-
+        orderItem.setOrderPrice(item.getPrice() * item.getDiscount() / 100);
         item.removeStock(count);
         return orderItem;
 
