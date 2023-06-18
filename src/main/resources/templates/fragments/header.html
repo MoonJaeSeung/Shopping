@@ -1,7 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <style>
+        /* CSS for navbar */
+        .navbar {
+            background-color: #87ceeb;
+        }
 
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fff;
+            background-color: #228b22;
+        }
+
+        /* CSS for form */
+        .form-inline .form-control {
+            width: 200px;
+        }
+
+        .form-inline .btn {
+            background-color: #fff;
+            color: #87ceeb;
+        }
+
+        .form-inline .btn:hover {
+            background-color: #e9ecef;
+            color: #228b22;
+        }
+    </style>
+</head>
+<body>
 <div th:fragment="header">
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -9,7 +46,7 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/">Shop</a>
+        <a class="navbar-brand" href="/">두번째 읽기</a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -42,5 +79,5 @@
         </div>
     </nav>
 </div>
-
+</body>
 </html>
