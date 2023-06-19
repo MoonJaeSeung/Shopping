@@ -4,8 +4,29 @@
     <style>
         /* CSS for carousel */
         .carousel-inner > .item {
-            height: 350px;
+            height: 250px;
+            margin-bottom: 0; /* Remove the bottom margin */
         }
+
+        .carousel-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+           
+        }
+
+        .banner-container {
+            position: relative;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
 
         /* Margin utility class */
         .margin {
@@ -54,43 +75,42 @@
 
         /* Pagination styling */
         .pagination {
+            display: flex;
             justify-content: center;
             margin-top: 20px;
         }
 
-        .page-item.disabled .page-link {
-            color: #6c757d;
-            pointer-events: none;
-            cursor: not-allowed;
-            background-color: #fff;
-            border-color: #dee2e6;
-        }
-
-        .page-item.disabled .page-link:hover {
-            background-color: #fff;
-        }
-
-        .page-item.active .page-link {
-            background-color: #87ceeb;
-            border-color: #87ceeb;
-        }
-
-        .page-item.active .page-link:hover {
-            background-color: #87ceeb;
-            border-color: #87ceeb;
+        .page-item {
+            margin: 0 5px;
         }
 
         .page-link {
             color: #87ceeb;
             background-color: #fff;
-            border: 1px solid #dee2e6;
+            border: 1px solid #87ceeb;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
         }
 
         .page-link:hover {
-            color: #228b22;
+            background-color: #87ceeb;
+            border-color: #87ceeb;
+            color: #fff;
             text-decoration: none;
-            background-color: #e9ecef;
+        }
+
+        .page-item.disabled .page-link {
+            color: #6c757d;
+            background-color: #fff;
             border-color: #dee2e6;
+            cursor: not-allowed;
+        }
+
+        .page-item.active .page-link {
+            background-color: #87ceeb;
+            border-color: #87ceeb;
+            color: #fff;
         }
     </style>
 </head>
@@ -99,10 +119,16 @@
     <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active item">
-                <img class="d-block w-100 banner" src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png" alt="First slide">
+                <div class="banner-container">
+                    <img class="d-block w-100 banner" src="/static/img/main.jpg" style="height: 180px" alt="First slide">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <h2 class="text-center" style="padding-top: 193px;">개발자들을 위한 도서관</h2>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
     <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
     <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
@@ -112,14 +138,14 @@
     <div class="row">
         <div th:each="item, status: ${items.getContent()}" class="col-md-4 margin">
             <div class="card">
-                <a th:href="'/item/' + ${item.id}" class="text-dark">
+                <a th:href="'/item/' + ${item.id}" class="text-dark position-relative d-inline-block">
                     <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
-                    <div class="card-body">
-                        <h4 class="card-title">[[${item.itemNm}]]</h4>
-                        <p class="card-text">[[${item.itemDetail}]]</p>
-                        <h3 class="card-title text-danger">[[${item.price}]]원</h3>
-                    </div>
+                    <h4 class="card-title text-center position-absolute top-50 start-50 translate-middle m-0">[[${item.itemNm}]]</h4>
                 </a>
+                <div class="card-body">
+                    <p class="card-text">[[${item.itemDetail}]]</p>
+                    <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+                </div>
             </div>
         </div>
     </div>

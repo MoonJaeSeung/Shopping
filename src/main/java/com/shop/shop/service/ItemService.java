@@ -32,6 +32,7 @@ public class ItemService {
 
         //상품 등록
         Item item = itemFormDto.createItem();
+        item.setDiscount(100);
         itemRepository.save(item);
 
         //이미지 등록

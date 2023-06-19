@@ -1,16 +1,25 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
-
 <head>
   <!-- Add necessary meta tags, CSS, and JavaScript here -->
 </head>
 
+<th:block layout:fragment="css">
+  <style>
+    .btn-primary{
+      margin: 10px;
+      background-color: #d2b3fb;
+      border-color: #d2b3fb;
+    }
+  </style>
+</th:block>
 <div layout:fragment="content">
   <h1>Coupon List</h1>
-  <a th:href="@{/admin/coupon/new}">Create Coupon</a>
-
-  <table class="table">
+  <a th:href="@{/admin/coupon/new}" class="btn btn-primary">Create Coupon</a>
+  <br>
+  <table class="table table-striped">
     <thead>
     <tr>
       <th>Coupon Name</th>
@@ -29,12 +38,11 @@
       <td th:text="${coupon.dis_ratio} + '%'"></td>
       <td>
         <form th:action="@{/coupon/delete/{id}(id=${coupon.id})}" method="post">
-          <button type="submit" class="btn btn danger">delete</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
         </form>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
-
 </html>

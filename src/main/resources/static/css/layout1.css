@@ -21,3 +21,8 @@ body {
     margin-left: 200px;
     margin-right: 200px;
 }
+.btn-primary{
+    margin: 10px;
+    background-color: #d2b3fb;
+    border-color: #d2b3fb;
+}
