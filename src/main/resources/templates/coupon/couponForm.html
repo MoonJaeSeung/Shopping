@@ -8,30 +8,30 @@
 </head>
 
 <th:block layout:fragment="script">
-    <script>
-        function toggleInputField() {
-            var disPriceInput = document.getElementById('dis_price_check');
-            var disRatioInput = document.getElementById('dis_ratio_check');
-            var priceInput = document.getElementById('dis_price');
-            var ratioInput = document.getElementById('dis_ratio');
+<!--    <script>-->
+<!--        function toggleInputField() {-->
+<!--            var disPriceInput = document.getElementById('dis_price_check');-->
+<!--            var disRatioInput = document.getElementById('dis_ratio_check');-->
+<!--            var priceInput = document.getElementById('dis_price');-->
+<!--            var ratioInput = document.getElementById('dis_ratio');-->
 
-            if (disPriceInput.checked) {
-                priceInput.disabled = false;
-                ratioInput.disabled = true;
-                ratioInput.value = ""; // Reset ratio input value
-                disRatioInput.checked = false; // Uncheck dis_ratio_check
-            } else if (disRatioInput.checked) {
-                priceInput.disabled = true;
-                priceInput.value = ""; // Reset price input value
-                ratioInput.disabled = false;
-                disPriceInput.checked = false; // Uncheck dis_price_check
-            } else {
-                priceInput.disabled = true;
-                ratioInput.disabled = true;
-                priceInput.value = ""; // Reset price input value
-                ratioInput.value = ""; // Reset ratio input value
-            }
-        }
+<!--            if (disPriceInput.checked) {-->
+<!--                priceInput.disabled = false;-->
+<!--                ratioInput.disabled = true;-->
+<!--                ratioInput.value = ""; // Reset ratio input value-->
+<!--                disRatioInput.checked = false; // Uncheck dis_ratio_check-->
+<!--            } else if (disRatioInput.checked) {-->
+<!--                priceInput.disabled = true;-->
+<!--                priceInput.value = ""; // Reset price input value-->
+<!--                ratioInput.disabled = false;-->
+<!--                disPriceInput.checked = false; // Uncheck dis_price_check-->
+<!--            } else {-->
+<!--                priceInput.disabled = true;-->
+<!--                ratioInput.disabled = true;-->
+<!--                priceInput.value = ""; // Reset price input value-->
+<!--                ratioInput.value = ""; // Reset ratio input value-->
+<!--            }-->
+<!--        }-->
     </script>
 </th:block>
 
@@ -71,21 +71,36 @@
         </div>
         <p th:if="${#fields.hasErrors('couponNm')}" th:errors="*{couponNm}" class="fieldError">Incorrect data</p>
 
+<!--        <div class="input-group">-->
+<!--            <label for="deadLine">Deadline:</label>-->
+<!--            <input type="datetime-local" th:field="*{deadLine}" class="form-control" id="deadLine" name="deadLine"-->
+<!--                   required />-->
+<!--        </div>-->
+
+
         <div class="input-group">
-            <label for="deadLine">Deadline:</label>
-            <input type="datetime-local" th:field="*{deadLine}" class="form-control" id="deadLine" name="deadLine"
-                   required />
+            <div class="input-group-prepend">
+                <span class="input-group-text">마감 기한</span>
+            </div>
+            <input type="datetime-local" th:field="*{deadLine}" class="form-control" id="deadLine" name="deadLine" required />
         </div>
         <p th:if="${#fields.hasErrors('deadLine')}" th:errors="*{deadLine}" class="fieldError">Incorrect data</p>
 
-        <div class="input-group">
-            <label for="dis_price">Discount Price:</label>
-            <input type="checkbox" id="dis_price_check" name="dis_price_check" onchange="toggleInputField()" />
-            <input type="number" th:field="*{dis_price}" class="form-control" id="dis_price" name="dis_price"
-                   disabled />
-        </div>
+<!--        <div class="input-group">-->
+<!--            <label for="dis_price">할인 가격:</label>-->
+<!--            <input type="checkbox" id="dis_price_check" name="dis_price_check"  />-->
+<!--            <input type="number" th:field="*{dis_price}" class="form-control" id="dis_price" name="dis_price"/>-->
+<!--        </div>-->
 
         <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">할인 가격</span>
+            </div>
+            <input type="text" th:field="*{dis_price}" class="form-control" id="dis_price" name="dis_price"
+                   placeholder="할인 가격을을 입력해주세요" required />
+        </div>
+
+        <div class="input-group" hidden="hidden">
             <label for="dis_ratio">Discount Ratio:</label>
             <input type="checkbox" id="dis_ratio_check" name="dis_ratio_check" onchange="toggleInputField()" />
             <input type="number" th:field="*{dis_ratio}" class="form-control" id="dis_ratio" name="dis_ratio"

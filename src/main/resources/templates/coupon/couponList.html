@@ -25,7 +25,7 @@
       <th>Coupon Name</th>
       <th>Deadline</th>
       <th>Discount Price</th>
-      <th>Discount Ratio</th>
+<!--      <th>Discount Ratio</th>-->
       <th></th>
     </tr>
     </thead>
@@ -35,7 +35,7 @@
       <td th:text="${coupon.couponNm}"></td>
       <td th:text="${coupon.deadLine}"></td>
       <td th:text="${coupon.dis_price}"></td>
-      <td th:text="${coupon.dis_ratio} + '%'"></td>
+<!--      <td th:text="${coupon.dis_ratio} + '%'"></td>-->
       <td>
         <form th:action="@{/coupon/delete/{id}(id=${coupon.id})}" method="post">
           <button type="submit" class="btn btn-danger">Delete</button>

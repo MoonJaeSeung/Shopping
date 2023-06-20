@@ -4,7 +4,7 @@
     <style>
         /* CSS for carousel */
         .carousel-inner > .item {
-            height: 250px;
+            height: 190px;
             margin-bottom: 0; /* Remove the bottom margin */
         }
 
@@ -112,6 +112,10 @@
             border-color: #87ceeb;
             color: #fff;
         }
+
+        .row{
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +133,11 @@
         </div>
     </div>
 
+    <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
+        <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
 
     <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
     <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
@@ -143,6 +152,7 @@
                     <h4 class="card-title text-center position-absolute top-50 start-50 translate-middle m-0">[[${item.itemNm}]]</h4>
                 </a>
                 <div class="card-body">
+                    <br>
                     <p class="card-text">[[${item.itemDetail}]]</p>
                     <h3 class="card-title text-danger">[[${item.price}]]원</h3>
                 </div>

@@ -163,7 +163,7 @@
         }
         #op{
             color: gray;
-            font-size:14px;
+            font-size:18px;
         }
     </style>
 </th:block>
@@ -191,8 +191,8 @@
             <div class="text-right">
                 <div class="h4 text-danger text-left" >
                     <input type="hidden" th:value="${item.price * item.discount/100}" id="price" name="price">
-                    <span id="op" th:text="'원가 ' + ${item.price} +'원'"></span><br>
-                    <span th:text="'할인가 ' + (${item.price * item.discount/100}) + '원'"></span>
+                    <span id="op" th:text="'가격 ' + ${item.price} +'원'"></span><br>
+<!--                    <span th:text="'할인가 ' + (${item.price * item.discount/100}) + '원'"></span>-->
                     <br>
                     <span id="coupon"></span>
 

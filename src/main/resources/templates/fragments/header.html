@@ -5,21 +5,25 @@
     <style>
         /* CSS for navbar */
         .navbar {
-            background-color: mediumpurple;
+            background-color: transparent;
+            border-bottom: 2px solid mediumpurple;
         }
 
         .navbar-brand {
-            color: #fff;
+            color: #000;
             font-weight: bold;
         }
 
         .navbar-nav .nav-link {
-            color: #fff;
+            color: #000;
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;"
         }
 
         .navbar-nav .nav-link:hover {
-            color: #fff;
             background-color: #228b22;
+            color: #fff;
         }
 
         /* CSS for form */
@@ -36,46 +40,59 @@
             background-color: #e9ecef;
             color: #228b22;
         }
+
+
     </style>
+
 </head>
 <body>
 <div th:fragment="header">
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(223 175 249) !important;">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(255,255,255) !important;">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/">보물상자</a>
+        <a class="navbar-brand" href="/" style="color: #ac89ff;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">보물 상자</a>
+        <div class="collapse navbar-collapse justify-content-center align-items-center" id="navbarTogglerDemo03">
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin: auto">
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin/item/new">상품 등록</a>
+                    <a class="nav-link" href="/admin/item/new"
+                       style="color: black; font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">상품 등록</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin/items">상품 관리</a>
+                    <a class="nav-link" href="/admin/items"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                        상품 관리</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/cart">장바구니</a>
+                    <a class="nav-link" href="/cart"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                        장바구니</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/orders">구매이력</a>
+                    <a class="nav-link" href="/orders"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    구매이력</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin/coupons">쿠폰관리</a>
+                    <a class="nav-link" href="/admin/coupons"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    쿠폰관리</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAnonymous()">
-                    <a class="nav-link" href="/members/login">로그인</a>
+                    <a class="nav-link" href="/members/login"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    로그인</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/members/logout">로그아웃</a>
+                    <a class="nav-link" href="/members/logout"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    로그아웃</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
-                <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
         </div>
     </nav>
 </div>
