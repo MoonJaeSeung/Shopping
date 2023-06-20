@@ -42,4 +42,6 @@ public class CouponDto {
     public Coupon createCoupon(){
         return modelMapper.map(this, Coupon.class);
     }
+
+
 }

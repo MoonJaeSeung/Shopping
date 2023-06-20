@@ -13,18 +13,24 @@
       background-color: #d2b3fb;
       border-color: #d2b3fb;
     }
+
+    .btn-danger{
+      margin: 0px;
+      background-color: #d2b3fb;
+      border-color: #d2b3fb;
+    }
   </style>
 </th:block>
 <div layout:fragment="content">
-  <h1>Coupon List</h1>
-  <a th:href="@{/admin/coupon/new}" class="btn btn-primary">Create Coupon</a>
+  <h1>쿠폰 목록</h1>
+  <a th:href="@{/admin/coupon/new}" class="btn btn-primary">쿠폰 생성</a>
   <br>
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Coupon Name</th>
-      <th>Deadline</th>
-      <th>Discount Price</th>
+      <th>쿠폰 이름</th>
+      <th>마감 기한</th>
+      <th>할인 가격</th>
 <!--      <th>Discount Ratio</th>-->
       <th></th>
     </tr>
@@ -38,7 +44,7 @@
 <!--      <td th:text="${coupon.dis_ratio} + '%'"></td>-->
       <td>
         <form th:action="@{/coupon/delete/{id}(id=${coupon.id})}" method="post">
-          <button type="submit" class="btn btn-danger">Delete</button>
+          <button type="submit" class="btn btn-danger">삭제</button>
         </form>
       </td>
     </tr>

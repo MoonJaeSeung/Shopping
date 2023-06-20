@@ -39,5 +39,9 @@ public class Coupon {
         this.dis_ratio = dis_ratio;
     }
 
+    public boolean isExpired(){
+        LocalDateTime currentTime = LocalDateTime.now();
+        return currentTime.isAfter(deadLine);
+    }
 
 }

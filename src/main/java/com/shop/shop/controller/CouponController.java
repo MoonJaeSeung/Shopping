@@ -38,14 +38,13 @@ public class CouponController {
 
     @PostMapping("/admin/coupon/new")
     public String createCoupon(@Valid CouponDto couponDto, BindingResult bindingResult, Principal principal) {
-//        if (bindingResult.hasErrors()) {
-//            return "coupon/couponForm";
-//        }
+        if (bindingResult.hasErrors()) {
+            return "coupon/couponForm";
+        }
 
         couponService.saveCoupon(couponDto);
 
         return "redirect:/";
-
     }
 
     @GetMapping(value = "/admin/coupons")
@@ -80,17 +79,15 @@ public class CouponController {
         return "redirect:/admin/coupons";
     }
 
-    @PostMapping(value="/coupon/use/{couponId}")
-    public void useCoupon(@PathVariable("couponId") Long couponId){
-
-    }
 
 
-    @PostMapping(value = "/coupon/get/{id}")
-    public String gainCoupon(@PathVariable("id") Long id, Principal principal){
-        System.out.println("couponId : " + id);
-        String email = principal.getName();
-        couponService.gainCoupon(id, email);
-        return "redirect:/coupon/list";
-    }
+//    @PostMapping(value = "/coupon/get/{id}")
+//    public String gainCoupon(@PathVariable("id") Long id, Principal principal){
+//        System.out.println("couponId : " + id);
+//        String email = principal.getName();
+//        couponService.gainCoupon(id, email);
+//        return "redirect:/coupon/list";
+//    }
+
+
 }

@@ -14,6 +14,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -36,8 +37,11 @@ public class CouponService {
     public List<CouponDto> getCoupon(){
 
         List<Coupon> coupons = couponRepository.findAll();
+        List<Coupon> validCoupons = coupons.stream()
+                .filter(coupon -> !coupon.isExpired())
+                .collect(Collectors.toList());
         List<CouponDto> couponDtoList = new ArrayList<>();
-        for (Coupon coupon : coupons) {
+        for (Coupon coupon : validCoupons) {
             CouponDto couponDto = CouponDto.of(coupon);
             couponDtoList.add(couponDto);
         }
@@ -49,17 +53,17 @@ public class CouponService {
     }
 
 
-    public void gainCoupon(Long id, String email) {
-        Coupon coupon = couponRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
-        Member member = memberRepository.findByEmail(email);
-
-        List<Coupon> coupon1 = member.getCoupon();
-        for (Coupon coupon2 : coupon1) {
-            if(coupon2.getId() == id){
-                throw new DuplicateCouponException("이미 가지고 있는 쿠폰입니다", 1000);
-            }
-        }
-        couponRepository.gainCoupon(coupon, member);
-    }
+//    public void gainCoupon(Long id, String email) {
+//        Coupon coupon = couponRepository.findById(id)
+//                .orElseThrow(EntityNotFoundException::new);
+//        Member member = memberRepository.findByEmail(email);
+//
+//        List<Coupon> coupon1 = member.getCoupon();
+//        for (Coupon coupon2 : coupon1) {
+//            if(coupon2.getId() == id){
+//                throw new DuplicateCouponException("이미 가지고 있는 쿠폰입니다", 1000);
+//            }
+//        }
+//        couponRepository.gainCoupon(coupon, member);
+//    }
 }

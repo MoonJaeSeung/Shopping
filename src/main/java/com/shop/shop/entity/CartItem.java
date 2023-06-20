@@ -19,7 +19,7 @@ public class CartItem extends BaseEntity{
     @JoinColumn(name="cart_id")
     private Cart cart;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name="item_id")
     private Item item;
 

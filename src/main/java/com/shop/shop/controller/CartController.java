@@ -30,9 +30,12 @@ public class CartController {
             StringBuilder sb = new StringBuilder();
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
             for (FieldError fieldError : fieldErrors) {
+                System.out.println("fieldError = " + fieldError);
+            }
+            for (FieldError fieldError : fieldErrors) {
                 sb.append(fieldError.getDefaultMessage());
             }
-            return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);    //에러를 넘겼을 떄 어떻게 처리하나 함 봐보자
+            return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
         }
 
         String email = principal.getName();

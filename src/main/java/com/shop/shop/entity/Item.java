@@ -40,6 +40,12 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; //상품 판매 상태
 
+    @OneToMany(mappedBy = "item",cascade = CascadeType.DETACH)
+    private List<OrderItem> orderItems;
+
+    @OneToMany(mappedBy = "item",cascade = CascadeType.REMOVE)
+    private List<CartItem> cartItems;
+
     @OneToMany(mappedBy = "item", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<ItemImg> itemImgs = new ArrayList<>();
 
