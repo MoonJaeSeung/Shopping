@@ -5,6 +5,7 @@ import com.shop.shop.dto.ItemFormDto;
 import com.shop.shop.entity.Comment;
 import com.shop.shop.entity.Item;
 import com.shop.shop.repository.ItemRepository;
+import com.shop.shop.repository.MemberRepository;
 import com.shop.shop.service.CommentService;
 import com.shop.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,9 @@ public class CommentController {
     @Autowired
     ItemRepository itemRepository;
 
+    @Autowired
+    MemberRepository memberRepository;
+
     @PostMapping(value = "/new")
     public String saveComment(@ModelAttribute CommentFormDto commentFormDto, Model model) {
         String commentText = commentFormDto.getCommentText();
@@ -47,8 +51,8 @@ public class CommentController {
         System.out.println("savedComment = " + savedComment.toString());
         model.addAttribute("comments", savedComment);
         model.addAttribute("item", itemFormDto);
-        return "test";
-//        return "item/itemDtl";
+//        return "test";
+        return "item/itemDtl";
     }
 
 
@@ -66,9 +70,10 @@ public class CommentController {
             Long id = comments.get(i).getItem().getId();
             String commentText = comments.get(i).getCommentText();
             String createdBy = comments.get(i).getCreatedBy();
-                if(id == itemId) {
+            String name = memberRepository.findByEmail(createdBy).getName();
+            if(id == itemId) {
                     int n=0;
-                    CommentFormDto c = new CommentFormDto(commentText, id, createdBy);
+                    CommentFormDto c = new CommentFormDto(commentText, id, name);
                     commentsList.add(n, c);
                     n++;
                 }
