@@ -19,8 +19,8 @@ public class MainController {
 
     private final ItemService itemService;
 
-    @GetMapping(value="/")
-    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
+    @GetMapping(value = "/")
+    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
         model.addAttribute("items", items);
@@ -28,4 +28,13 @@ public class MainController {
         model.addAttribute("maxPage", 5);
         return "main";
     }
+
+//    @GetMapping(value = "/")
+//    public String main2() {
+//        return "index";
+//    }
 }
+
+
+
+

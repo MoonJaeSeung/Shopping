@@ -2,6 +2,7 @@ package com.shop.shop.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,11 +15,13 @@ public class OrderItem extends BaseEntity{
     @Column(name="order_item_id")
     private Long id;
 
+    @Nullable
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name="item_id")
     private Item item;
 
-
+    @Column(name = "item_name")
+    private String itemName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
@@ -33,6 +36,7 @@ public class OrderItem extends BaseEntity{
     public static OrderItem createOrderItem(Item item, int count){
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
+        orderItem.setItemName(item.getItemNm());
         orderItem.setCount(count);
         orderItem.setOrderPrice(item.getPrice() * item.getDiscount() / 100);
         item.removeStock(count);

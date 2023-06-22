@@ -25,7 +25,34 @@
         var dis_price = currentUrl.match(/dis_price=(\d+)/);
         var dis_ratio = currentUrl.match(/dis_ratio=(\d+)/);
         var number = dis_price ? parseInt(dis_price[1]) : dis_ratio ? parseInt(dis_ratio[1]) : 0;
+        var itemId = $("#itemId").val();
 
+        // $("#commentForm").submit(function(e) {
+        //     e.preventDefault();  // to prevent the form from submitting in the traditional way
+        //
+        //     var token = $("meta[name='_csrf']").attr("content");
+        //     var header = $("meta[name='_csrf_header']").attr("content");
+        //
+        //     var commentText = $("#commentText").val();
+        //
+        //
+        //     $.ajax({
+        //         url: '/comment',
+        //         type: 'POST',
+        //         contentType: "application/json",
+        //         data: JSON.stringify({ text: commentText, itemId: itemId }),
+        //         beforeSend: function(xhr) {
+        //             /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+        //             xhr.setRequestHeader(header, token);
+        //         },
+        //         success: function(result,status) {
+        //             location.href='/cart';
+        //         },
+        //         error: function(jqXHR, status, error) {
+        //             alert(jqXHR.responseText);
+        //         }
+        //     });
+        // });
 
 
         // function getUrl() {
@@ -237,6 +264,37 @@
 
     <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
         <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
+    </div>
+
+    <!-- Comments Section -->
+    <div class="jumbotron jumbotron-fluid mgt-30">
+        <div class="container">
+            <h4 class="display-5">댓글</h4>
+            <hr class="my-4">
+
+<!--            &lt;!&ndash; Existing Comments List &ndash;&gt;-->
+<!--            <div id="commentsList" th:each="comment : ${comments}">-->
+<!--                <div class="card mgb-15">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title" th:text="${comment.author}"></h5>-->
+<!--                        <p class="card-text" th:text="${comment.text}"></p>-->
+<!--                        <p class="card-text">-->
+<!--                            <small class="text-muted" th:text="${comment.date}"></small>-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <!-- New Comment Form -->
+            <form id="commentForm"  th:action="@{/comments/new}" method="post" >
+                <div class="form-group">
+                    <label for="commentText">댓글 남기기:</label>
+                    <textarea class="form-control" id="commentText" name="commentText" rows="3"></textarea>
+                </div>
+                <input type="hidden" id="itemId" name="itemId" th:value="${item.id}">
+                <button type="submit" class="btn btn-primary">제출</button>
+            </form>
+        </div>
     </div>
 
 </div>
