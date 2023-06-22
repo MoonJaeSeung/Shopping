@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/comments")
@@ -53,13 +54,28 @@ public class CommentController {
 
     @GetMapping("/fetch/{itemId}")
     @ResponseBody
-//    @RequestMapping(produces = "application/json")
-    public List<Comment> fetchComments(@PathVariable("itemId") Long itemId) {
+    public List<CommentFormDto> fetchComments(@PathVariable("itemId") Long itemId) {
         System.out.println("shot");
-        List<Comment> comments = commentService.find(itemId);
-        System.out.println(" asdsad");
-        return comments;
+        List<Comment> comments = commentService.find();
+        List<CommentFormDto> commentsList = new ArrayList<>();
+
+        //필요한게 item이름이랑 comment 정보지
+        List<Long> itemNmList=null;
+
+        for(int i=0; i<comments.size(); i++){
+            Long id = comments.get(i).getItem().getId();
+            String commentText = comments.get(i).getCommentText();
+            String createdBy = comments.get(i).getCreatedBy();
+                if(id == itemId) {
+                    int n=0;
+                    CommentFormDto c = new CommentFormDto(commentText, id, createdBy);
+                    commentsList.add(n, c);
+                    n++;
+                }
+        }
+        return commentsList;
     }
+
 
     @PostMapping("/comments/new")
     public void submitComment(@RequestParam("commentText") String commentText,

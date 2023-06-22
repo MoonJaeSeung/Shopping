@@ -13,71 +13,34 @@
 <!-- 사용자 스크립트 추가 -->
 <th:block layout:fragment="script">
     <script th:inline="javascript">
+        $(document).ready(function() {
 
-        var itemId = $('#itemId').val();
+            var itemId = $("#itemId").val();
 
-        $(document).ready(function(){
-            fetchComments()
-            $('#commentForm').on('submit', function(event) {
-                event.preventDefault(); // Prevent the form from being submitted
-
-                var commentText = $('#commentText').val();
-
-
-                $.ajax({
-                    url: '/comments/new',
-                    type: 'POST',
-                    data: {
-                        'commentText': commentText,
-                        'itemId': itemId
-                    },
-                    success: function() {
-                        $('#commentText').val(''); // Clear the text area
-                        fetchComments(); // Fetch the updated list of comments
-                    },
-                    error: function(error) {
-                        console.log('Error in submitting comment');
-                    }
-                });
-            });
-
-
-        });
-
-
-
-        function fetchComments() {
-
-            var itemId = $('#itemId').val();
-
+            // Fetch comments on page load
             $.ajax({
-                url: '/comments/fetch/' + itemId,
+                url: '/comments/fetch/' + itemId, // Your server-side script to fetch comments
+                contentType: 'application/json',
                 type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    appendComments(data);
+                success: function(response) {
+                    console.log('response', response)
+                    // Add each comment to the comments section
+                    // You might need to adjust this based on how your server sends the response
+                    response.forEach(function(comment) {
+                        var commentHtml = '<div class="card mgb-15"><div class="card-body">' +
+                            '<h5 class="card-title">' + comment.itemId + '</h5>' +
+                            '<p class="card-text">' + comment.commentText + '</p></div></div>' +
+                            '<p class="card-text">' + comment.createdBy + '</p></div></div>';
+                        $('#commentsList').append(commentHtml);
+                    });
                 },
                 error: function(error) {
-                    console.log('Error in fetching comments');
+                    console.log('Error:', error);
                 }
             });
-        }
 
-        function appendComments(comments) {
-            var commentsDiv = $('#commentsList');
-            commentsDiv.empty(); // Clear out the existing comments
-
-            $.each(comments, function(i, comment) {
-                var commentDiv = `<div class="card mgb-15">
-            <div class="card-body">
-                <h5 class="card-title">${comment.item.itemNm}</h5>
-                <p class="card-text">${comment.commentText}</p>
-            </div>
-        </div>`;
-
-                commentsDiv.append(commentDiv);
-            });
-        }
+            // The rest of your code...
+        });
 
     </script>
 </th:block>
@@ -95,17 +58,8 @@
             <hr class="my-4">
 
             <!-- Existing Comments List -->
-            <div id="commentsList" th:each="comment : ${comments}">
-                <div class="card mgb-15">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${comment.getItem.itemNm}"></h5>
-                        <h5 class="card-title" th:text="${comment.getItem.itemNm}"></h5>
-                        <p class="card-text" th:text="${comment.commentText}"></p>
-                        <!--                        <p class="card-text">-->
-                        <!--                            <small class="text-muted" th:text="${comment.date}"></small>-->
-                        <!--                        </p>-->
-                    </div>
-                </div>
+            <div id="commentsList">
+
             </div>
 
             <!-- New Comment Form -->

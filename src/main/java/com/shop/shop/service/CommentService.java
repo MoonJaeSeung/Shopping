@@ -22,7 +22,7 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    public List<Comment> find(Long itemId) {
-        return commentRepository.findAllByItemId(itemId);
+    public List<Comment> find() {
+        return commentRepository.findAll();
     }
 }
