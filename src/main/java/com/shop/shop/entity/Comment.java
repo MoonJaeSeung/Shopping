@@ -4,8 +4,6 @@ import com.shop.shop.dto.CommentFormDto;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -18,15 +16,16 @@ public class Comment extends BaseEntity{
     private Long id;
 
     @Column(length = 1000)
-    private String text;
+    private String commentText;
 
-    @Column
-    private Long itemId;
+    @JoinColumn(name="item_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Item item;
 
 
     public Comment() {
-
     }
+
 
 
 }

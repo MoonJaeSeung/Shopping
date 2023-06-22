@@ -14,7 +14,7 @@
         $(document).ready(function(){
 
             calculateToalPrice();
-            getUrl()
+            fetchComments()
 
             $("#count").change( function(){
                 calculateToalPrice();
@@ -27,47 +27,37 @@
         var number = dis_price ? parseInt(dis_price[1]) : dis_ratio ? parseInt(dis_ratio[1]) : 0;
         var itemId = $("#itemId").val();
 
-        // $("#commentForm").submit(function(e) {
-        //     e.preventDefault();  // to prevent the form from submitting in the traditional way
-        //
-        //     var token = $("meta[name='_csrf']").attr("content");
-        //     var header = $("meta[name='_csrf_header']").attr("content");
-        //
-        //     var commentText = $("#commentText").val();
-        //
-        //
-        //     $.ajax({
-        //         url: '/comment',
-        //         type: 'POST',
-        //         contentType: "application/json",
-        //         data: JSON.stringify({ text: commentText, itemId: itemId }),
-        //         beforeSend: function(xhr) {
-        //             /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
-        //             xhr.setRequestHeader(header, token);
-        //         },
-        //         success: function(result,status) {
-        //             location.href='/cart';
-        //         },
-        //         error: function(jqXHR, status, error) {
-        //             alert(jqXHR.responseText);
-        //         }
-        //     });
-        // });
 
 
-        // function getUrl() {
-        //     if (number !== null) {
-        //         if(coupon_price != null)
-        //         document.getElementById("coupon").innerText = "쿠폰 적용시 " + coupon_price + " 추가 할인";
-        //         else if(coupon_ratio != null){
-        //             document.getElementById("coupon").innerText = "쿠폰 적용시 " + coupon_ratio+ " 추가 할인";
-        //         }
-        //
-        //     } else {
-        //         document.getElementById("coupon").style.display = "none";
-        //     }
-        //     console.log(number);
-        // }
+        function fetchComments() {
+
+            var itemId = $("#itemId").val();
+
+            $.ajax({
+                url: '/comments/fetch/' + itemId,  // Replace with your server endpoint URL
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    var commentsList = $('#commentsList');
+                    commentsList.empty();  // Clear existing comments
+
+                    for (var i = 0; i < response.length; i++) {
+                        var comment = response[i];
+                        var commentItem = $('<div class="card mgb-15">' +
+                            '<div class="card-body">' +
+                            '<h5 class="card-title">' + comment.item.itemNm + '</h5>' +
+                            '<p class="card-text">' + comment.commentText + '</p>' +
+                            '</div>' +
+                            '</div>');
+                        commentsList.append(commentItem);
+                    }
+                },
+                error: function(jqXHR, status, error) {
+                    console.error(error);  // Handle error case
+                }
+            });
+        }
+
 
 
 
@@ -236,7 +226,7 @@
                 </div>
             </div>
             <hr class="my-4">
-
+            <h3 name="c" id="c" class="font-weight-bold"></h3>
             <div class="text-right mgt-50">
                 <h5>결제 금액</h5>
                 <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
@@ -272,18 +262,19 @@
             <h4 class="display-5">댓글</h4>
             <hr class="my-4">
 
-<!--            &lt;!&ndash; Existing Comments List &ndash;&gt;-->
-<!--            <div id="commentsList" th:each="comment : ${comments}">-->
-<!--                <div class="card mgb-15">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title" th:text="${comment.author}"></h5>-->
-<!--                        <p class="card-text" th:text="${comment.text}"></p>-->
+            <!-- Existing Comments List -->
+            <div id="commentsList" th:each="comment : ${comments}">
+                <div class="card mgb-15">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${comment.getItem.itemNm}"></h5>
+                        <h5 class="card-title" th:text="${comment.getItem.itemNm}"></h5>
+                        <p class="card-text" th:text="${comment.commentText}"></p>
 <!--                        <p class="card-text">-->
 <!--                            <small class="text-muted" th:text="${comment.date}"></small>-->
 <!--                        </p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+                    </div>
+                </div>
+            </div>
 
             <!-- New Comment Form -->
             <form id="commentForm"  th:action="@{/comments/new}" method="post" >

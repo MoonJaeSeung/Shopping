@@ -1,5 +1,6 @@
 package com.shop.shop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shop.shop.constant.Role;
 import com.shop.shop.dto.MemberFormDto;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Member extends BaseEntity {
 
     @Id

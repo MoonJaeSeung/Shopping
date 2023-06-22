@@ -83,14 +83,16 @@ public class ItemController {
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         model.addAttribute("item", itemFormDto);
-        return "item/itemDtl";
+        return "test";
+//        return "item/itemDtl";
     }
 
     @PostMapping(value = "/coupon/{itemId}")
     public String useCoupon(@PathVariable("itemId") Long itemId, Model model){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         model.addAttribute("item", itemFormDto);
-        return "item/itemDtl";
+        return "test";
+//        return "item/itemDtl";
     }
 
     @PostMapping(value = "/admin/item/{itemId}")
