@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@TestPropertySource(locations = "classpath:application-test.properties")
+@TestPropertySource(locations = "classpath:application.properties")
 @Transactional
 class OrderTest {
 
@@ -118,10 +118,7 @@ class OrderTest {
         OrderItem orderItem = orderItemRepository.findById(orderItemId)
                 .orElseThrow(EntityNotFoundException::new);
         System.out.println("order class = " + orderItem.getOrder().getClass());
-        System.out.println(" ========");
-        orderItem.getOrder().getOrderDate();
-        System.out.println("order class = " + orderItem.getOrder().getClass());
-        System.out.println(" ========");
+
 
 
     }
