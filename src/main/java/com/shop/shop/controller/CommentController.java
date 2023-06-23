@@ -10,6 +10,8 @@ import com.shop.shop.service.CommentService;
 import com.shop.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,26 +35,20 @@ public class CommentController {
     @Autowired
     MemberRepository memberRepository;
 
-    @PostMapping(value = "/new")
-    public String saveComment(@ModelAttribute CommentFormDto commentFormDto, Model model) {
-        String commentText = commentFormDto.getCommentText();
+    @PostMapping("/new")
+    public ResponseEntity<Long> addComment(@RequestBody CommentFormDto commentFormDto) {
         Long itemId = commentFormDto.getItemId();
-
+        String commentText = commentFormDto.getCommentText();
         Item item = itemRepository.findById(itemId).get();
 
         Comment comment = new Comment();
-
         comment.setCommentText(commentText);
         comment.setItem(item);
 
-        Comment savedComment = commentService.save(comment);
+        commentService.save(comment);
+        // Comment 추가 로직 구현
 
-        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
-        System.out.println("savedComment = " + savedComment.toString());
-        model.addAttribute("comments", savedComment);
-        model.addAttribute("item", itemFormDto);
-//        return "test";
-        return "item/itemDtl";
+        return new ResponseEntity<>(itemId, HttpStatus.OK);
     }
 
 
