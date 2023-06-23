@@ -81,7 +81,7 @@
                     // Add each comment to the comments section
                     // You might need to adjust this based on how your server sends the response
                     response.forEach(function(comment) {
-                        var commentHtml = '<div class="card mgb-15"><div class="card-body">' +
+                        var commentHtml = '<div class="card mgb-15" style="border:none "><div class="card-body">' +
                             '<h5 class="card-title">' + comment.createdBy + '</h5>' +
                             '<p class="card-text">' + comment.commentText + '</p></div></div>'
                             ;
@@ -219,6 +219,42 @@
         .btn-lg{
             margin-right: 0px;
         }
+
+        /* Comment Section Styles */
+        .comment-section {
+            background-color: #f3f3f3;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .comment-section .comment {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .comment-section .comment h5 {
+            font-weight: bold;
+        }
+
+        .comment-section .comment-textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .comment-section .submit-btn {
+            background-color: #cec2ff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
     </style>
 </th:block>
 
@@ -278,7 +314,7 @@
         </div>
     </div>
 
-    <div class="jumbotron jumbotron-fluid mgt-30">
+    <div class="jumbotron jumbotron-fluid mgt-30" style="background-color: white">
         <div class="container">
             <h4 class="display-5">상품 상세 설명</h4>
             <hr class="my-4">
@@ -287,31 +323,28 @@
     </div>
 
     <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
-        <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
+        <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="550">
     </div>
+    <!-- Comments Section -->
 
-    <div class="jumbotron jumbotron-fluid mgt-30">
         <div class="container">
             <h4 class="display-5">댓글</h4>
             <hr class="my-4">
 
-            <!-- Existing Comments List -->
-            <div id="commentsList">
+            <div class="comment-section">
+
+                <!-- Existing Comments List -->
+                <div id="commentsList">
+                    <!-- Comments will be inserted here by the JavaScript -->
+                </div>
+
+                <!-- New Comment Form -->
+                <textarea class="comment-textarea" id="commentText" name="commentText" rows="3" placeholder="댓글을 작성해주세요..."></textarea>
+                <button class="submit-btn" type="submit" onclick="addComment()">댓글 작성</button>
 
             </div>
-
-            <!-- New Comment Form -->
-
-            <div class="form-group">
-                <label for="commentText">댓글 남기기:</label>
-                <textarea class="form-control" id="commentText" name="commentText" rows="3"></textarea>
-            </div>
-            <input type="hidden" id="itemId" name="itemId" th:value="${item.id}">
-            <button type="submit" class="btn btn-primary" onclick="addComment()">제출</button>
 
         </div>
-    </div>
 
-</div>
 
 </html>
