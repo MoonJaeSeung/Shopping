@@ -24,3 +24,5 @@ public interface ItemRepository extends JpaRepository<Item,Long>, QuerydslPredic
     @Query(value = "select * from item i where i.item_detatil like %:itemDetail% oredr by i.price desc", nativeQuery = true)
     List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 }
+
+

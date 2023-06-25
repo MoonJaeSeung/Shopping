@@ -19,7 +19,7 @@ import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {//1
+public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
     private JPAQueryFactory queryFactory;
 
@@ -27,8 +27,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {//1
         this.queryFactory = new JPAQueryFactory(em);
     }
 
-    private BooleanExpression searchSellStatusEq(ItemSellStatus searchSellStatus) { //4
-        return searchSellStatus == null ? null : QItem.item.itemSellStatus.eq(searchSellStatus); //5
+    private BooleanExpression searchSellStatusEq(ItemSellStatus searchSellStatus) {
+        return searchSellStatus == null ? null : QItem.item.itemSellStatus.eq(searchSellStatus);
     }
 
     private BooleanExpression regDtsAfter(String searchDateType) {
@@ -50,13 +50,11 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {//1
     }
 
     private BooleanExpression searchByLike(String searchBy, String searchQuery) {
-
         if (StringUtils.equals("itemNm", searchBy)) {
             return QItem.item.itemNm.like("%" + searchQuery + "%");
         } else if (StringUtils.equals("createdBy", searchBy)) {
             return QItem.item.createdBy.like("%" + searchQuery + "%");
         }
-
         return null;
     }
 

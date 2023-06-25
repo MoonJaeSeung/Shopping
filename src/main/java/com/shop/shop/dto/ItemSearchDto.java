@@ -9,12 +9,18 @@ import lombok.ToString;
 @ToString
 public class ItemSearchDto {
 
+    //날짜
     private String searchDateType;
 
+    //판매 현황
     private ItemSellStatus searchSellStatus;
 
+    //상품명 or 등록자
     private String searchBy;
 
+    //검색어
     private String searchQuery = "";
 
 }
+
+

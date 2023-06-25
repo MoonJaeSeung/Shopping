@@ -68,11 +68,11 @@ public class CommentController {
             String createdBy = comments.get(i).getCreatedBy();
             String name = memberRepository.findByEmail(createdBy).getName();
             if(id == itemId) {
-                    int n=0;
-                    CommentFormDto c = new CommentFormDto(commentText, id, name);
-                    commentsList.add(n, c);
-                    n++;
-                }
+                int n=0;
+                CommentFormDto c = new CommentFormDto(commentText, id, name);
+                commentsList.add(n, c);
+                n++;
+            }
         }
         return commentsList;
     }
