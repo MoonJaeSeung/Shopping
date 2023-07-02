@@ -1,17 +1,7 @@
 ### 가독성을 위해 노션으로 봐주시면 감사하겠습니다!(노션으로 봐야 훨씬 편하게 보실 수 있습니다)
-프로젝트 프리뷰  : https://www.notion.so/Project-Preview-1773c42133ae4e4094af1bfe9f58ca3d <br>
-[보물 상자 V1](https://www.notion.so/V1-91311bb6c9314334b87db061c58ca204?pvs=21) <br>
-[프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21)
-
-
-## **C O N T A C T**
-
-- Email | wotmdskfk32@naver.com
-- Phone | 📞 010.5766.8843
-
-- Github | https://github.com/MoonJaeSeung
-- Blog | https://iwin.tistory.com/
-
+[프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) <br><br>
+[보물 상자 V1](https://www.notion.so/V1-91311bb6c9314334b87db061c58ca204?pvs=21) <br><br>
+[프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) <br><br>
 
 
 
@@ -233,7 +223,17 @@ GIT
 
 [GIT 커밋 히스토리 내역만 지우기](https://iwin.tistory.com/75)
 
-[프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) 
+---
 
 
+[프로젝트 회고](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) 
+
+---
+## **C O N T A C T**
+
+- Email | wotmdskfk32@naver.com
+- Phone | 📞 010.5766.8843
+
+- Github | https://github.com/MoonJaeSeung
+- Blog | https://iwin.tistory.com/
  
