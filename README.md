@@ -1,6 +1,6 @@
 ### 가독성을 위해 노션으로 봐주시면 감사하겠습니다!(노션으로 봐야 훨씬 편하게 보실 수 있습니다)
 [프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) <br><br>
-[보물 상자 V1](https://www.notion.so/V1-91311bb6c9314334b87db061c58ca204?pvs=21) <br><br>
+[보물 상자 구현](https://www.notion.so/V1-91311bb6c9314334b87db061c58ca204?pvs=21) <br><br>
 [프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) <br><br>
 
 
@@ -11,6 +11,7 @@
 ## 포트폴리오 목차
 
 - 방향성
+- 아키텍처
 - 사용 기술 및 스택
 - 프로젝트 설명
 - 프로젝트 원칙
@@ -69,6 +70,11 @@
 본 프로젝트를 실제 프로젝트라 생각하고 추가 설명없이 코드만 봐도 이해할 수 있게 하겠습니다.
 
 실무라고 가정하면 이는 팀원분들의 시간과 노력을 절약시키고, 업무 능률 상승으로 이어질 것이라 믿습니다.  
+
+## 아키텍처
+
+![image](https://github.com/MoonJaeSeung/Shopping/assets/108584477/3fe1b2b0-b353-4cb0-aa06-d03e7aaf2cf3)
+
 
 
 
