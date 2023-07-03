@@ -1,6 +1,6 @@
 ### 가독성을 위해 노션으로 봐주시면 감사하겠습니다!(노션으로 봐야 훨씬 편하게 보실 수 있습니다)
 [프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) <br><br>
-[보물 상자 구현](https://www.notion.so/V1-91311bb6c9314334b87db061c58ca204?pvs=21) <br><br>
+[프로젝트 구현](https://www.notion.so/V1-91311bb6c9314334b87db061c58ca204?pvs=21) <br><br>
 [프로젝트 Review](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) <br><br>
 
 
