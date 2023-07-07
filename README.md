@@ -77,7 +77,8 @@
 
 ## 아키텍처
 
-![image](https://github.com/MoonJaeSeung/Shopping/assets/108584477/3fe1b2b0-b353-4cb0-aa06-d03e7aaf2cf3)
+![image](https://github.com/MoonJaeSeung/Shopping/assets/108584477/f3c504f9-3b84-4ea8-9920-027659ab4852)
+
 
 
 
@@ -88,7 +89,7 @@ Java · Spring Boot
 
 Thymeleaf · HTML · CSS · JavaScript
 
-JPA · QueryDSL · MySQL
+JPA · QueryDSL · MariaDB
 
 GIT
 
