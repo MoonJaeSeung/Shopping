@@ -48,46 +48,8 @@
 
 
 
-## 아키텍처
 
-![image](https://github.com/MoonJaeSeung/Shopping/assets/108584477/cd86da6c-840b-40f5-808e-f01e2a4eb424)
-
-
-
-
-
-## **프로젝트 소개**
-
-**개발 관련 서적을 판매하는 도서 판매 플랫폼입니다.**
-
-이 프로젝트를 통해 저희는 사용자가 제품을 검색하고 주문하며 결제할 수 있는 기능을 구현할 것입니다. 또한, 사용자 관리, 상품 관리, 장바구니 관리 등의 기능도 포함할 예정입니다.
-
-<br>
-
-
-## **프로젝트 핵심 기술**
-
-- ERD 작성
-
-- CRUD
-
-- Spring security를 활용한 로그인 & 권한 부여
-
-- ERD 작성 & JPA를 활용한 ORM 기술
-
-- QueryDsl
-
-- 예외 처리
-
-- JUnit을 활용한 테스트
-
-- MVC 디자인 패턴에 대한 이해 및 적용
-
-- 프론트엔드 기술 사용(thymeleaf, HTML & CSS & JavaScript)
-    
-    프론트 엔드를 이해하고 프론트엔드와 소통할 수 있는 백엔드 개발자가 되기위해 프론트엔드 기술 경험
-    
-
+![image](https://github.com/MoonJaeSeung/Shopping/assets/108584477/2ec90963-7eb4-4eab-974c-9fd65b854d46)
 
 
 
@@ -97,19 +59,11 @@
 ![image](https://github.com/MoonJaeSeung/shopping/assets/108584477/fc1a9f84-6a12-41ff-ba6c-f33b8a8b7d0a)
 
 
+![image](https://github.com/MoonJaeSeung/Shopping/assets/108584477/fa4fa1ab-c906-417e-9573-47e67ab0daa5)
 
 
-# **주요 기능**
 
-- 회원가입
-- 로그인 & 로그아웃
-- 쿠폰 기능
-- 상품 추가 및 삭제
-- 상품 수정
-- 상품 검색
-- 장바구니
-- 주문 및 주문 내역 관리
-- 댓글
+
 
 
 # **Deep Dive**
@@ -173,7 +127,6 @@
 [GIT 커밋 히스토리 내역만 지우기](https://iwin.tistory.com/75)
 
 ---
-
 
 [프로젝트 회고](https://www.notion.so/Review-1218362e0d224755ad1b31a0ff66f79f?pvs=21) 
 
