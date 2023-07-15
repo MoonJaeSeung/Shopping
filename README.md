@@ -82,6 +82,71 @@ Query의 성능을 향상시켜 응답시간을 빠르게 개선하고 효율적
 
 
 
+# 주요 기능
+
+**주문**
+![주문](https://github.com/MoonJaeSeung/Shopping/assets/108584477/6f948e3c-4e9c-4a42-88d0-5ada2d15ad99)
+<br>
+<br>
+
+**주문 내역 확인**
+<br>
+
+![주문 취소](https://github.com/MoonJaeSeung/Shopping/assets/108584477/ab20f5d2-f383-4fef-b398-4feb6855237e)
+<br>
+<br>
+
+**장바구니**
+<br>
+
+![장바구니](https://github.com/MoonJaeSeung/Shopping/assets/108584477/68fa6a46-1ea0-46ef-a383-bca411db2fb1)
+<br>
+<br>
+
+**검색**
+<br>
+
+![검색](https://github.com/MoonJaeSeung/Shopping/assets/108584477/78455ba4-eaed-46ba-884f-b96280fa9666)
+<br>
+<br>
+
+**쿠폰 생성**
+<br>
+
+![쿠폰 발급](https://github.com/MoonJaeSeung/Shopping/assets/108584477/aabfebff-5e50-4c1c-853d-fc9e80a3948e)
+<br>
+<br>
+
+**쿠폰 목록**
+<br>
+
+![image](https://github.com/MoonJaeSeung/Shopping/assets/108584477/113a9fb6-464a-4bcd-99c7-ba967c667658)
+<br>
+<br>
+
+
+
+**댓글**
+<br>
+
+![댓글](https://github.com/MoonJaeSeung/Shopping/assets/108584477/ba30e6d8-b65c-449b-8c4f-8bbf3b18cf0b)
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
