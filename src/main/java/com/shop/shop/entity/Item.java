@@ -51,7 +51,7 @@ public class Item extends BaseEntity {
 
     @Column(name = "discount")
     private int discount;
-    //dddddd
+
 
     public void updateItem(ItemFormDto itemFormDto) {
         this.itemNm = itemFormDto.getItemNm();
