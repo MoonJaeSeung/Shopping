@@ -59,7 +59,7 @@ public class CommentController {
         List<Comment> comments = commentService.find();
         List<CommentFormDto> commentsList = new ArrayList<>();
 
-        //필요한게 item이름이랑 comment 정보지
+
         List<Long> itemNmList=null;
 
         for(int i=0; i<comments.size(); i++){
@@ -78,22 +78,5 @@ public class CommentController {
     }
 
 
-    @PostMapping("/comments/new")
-    public void submitComment(@RequestParam("commentText") String commentText,
-                              @RequestParam("itemId") Long itemId) {
-        // Code to create a new comment
-    }
-
-//    @GetMapping(value="/itemDtl/{itemId}")
-//    public String commentItem(@PathVariable("itemId") Long itemId, Model model){
-//        Item item = itemRepository.findById(itemId).get();
-//
-//        List<Comment> comments = commentService.find(itemId);
-//        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
-//
-//        model.addAttribute("item",itemFormDto);
-//        model.addAttribute("comments",comments);
-//        return "item/itemDtl";
-//    }
 
 }
