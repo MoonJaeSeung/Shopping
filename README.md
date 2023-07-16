@@ -167,6 +167,7 @@ JPA는 객체 지향적인 개발을 지원하며, 엔티티와 관련된 작업
 
 # **Deep Dive**
 
+[ERD 설계](https://iwin.tistory.com/132)
 
 
 [회원가입시 Member Entity가 아닌 MemberForm DTO를 활용하는 이유](https://iwin.tistory.com/86)
